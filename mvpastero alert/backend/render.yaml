@@ -1,0 +1,12 @@
+services:
+  # Backend API service
+  - type: web
+    name: astroalert-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: CORS_ORIGINS
+        value: https://astroalert-frontend.vercel.app
